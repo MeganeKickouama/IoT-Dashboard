@@ -14,5 +14,5 @@ Create and simulate a smart home device using a Rasberry Pi, and create a dashbo
 
 ## Phase 1: LED Activation
 
-## Phase 1 Description
+### Phase 1 Description
 Create a dashboard to control an LED on the device that switches the state of the LED from ON to OFF and vice-versa.
