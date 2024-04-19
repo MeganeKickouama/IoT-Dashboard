@@ -8,6 +8,7 @@
 - Yassine El Yamani
 - Mégane Kickouama
 - Peter Isaac Fishman
+- Ilan Trutner
 
 ### Project Description
 Create and simulate a smart home device using a Rasberry Pi, and create a dashboard to control and monitor the system.
