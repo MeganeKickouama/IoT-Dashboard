@@ -1,0 +1,167 @@
+* {
+  font-family: 'Orbitron', sans-serif !important;
+}
+
+body {
+  color: white;
+  background: #1e3f66 !important;
+  font-family: 'Orbitron', sans-serif !important;
+  /* background: #366986 !important; */
+}
+
+#main {
+  padding-left: 60px;
+  padding-top: 25px;
+  width: 89%;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+.hamburger>* {
+  display: inline;
+  padding-right: 10px;
+}
+
+#gauge-cell {
+  width: 900px;
+  height: 200px;
+}
+ß
+#gauge-row>* {
+  display: inline;
+}
+
+#gauge-row {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.gauge-containers {
+  height: 200px;
+  width: 475px;
+  margin-left: 50px;
+}
+
+.global-containers {
+  background: #2e5984 !important;
+  color: white;
+  margin-top: 50px;
+}
+
+.time-container {
+  width: 750px;
+  height: 500px;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.left-bottom-container {
+  width: 750px;
+  height: 250px;
+  margin-top: 50px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 250px;
+}
+
+.smallest-containers {
+  height: 250px;
+  width: 300px;
+  margin-left: 50px;
+}
+
+footer {
+  position: absolute;
+  background: #152238;
+  padding-left: 80px;
+  padding-top: 5px;
+  font-size: 25;
+  width: 100%;
+  height: 40px;
+  bottom: 0;
+}
+
+/* SWITCH LOGIC */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide the default checkbox */
+.switch input {
+  display: none;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:checked+.slider:before {
+  transform: translateX(26px);
+}
+
+#lamp {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 50px auto;
+  transition: background-color 0.5s;
+}
+
+#lamp.on {
+  background-color: yellow;
+}
+
+.led-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.lamp-container {
+  padding-top: -10px;
+  border-radius: 10px;
+  margin: auto;
+  text-align: center;
+}
+
+.slider
+{
+  color: #2e5984;
+}
