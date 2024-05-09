@@ -16,6 +16,7 @@ import logging
 import sqlite3
 
 conn = sqlite3.connect('profile.db')
+conn.execute('PRAGMA foreign_keys = ON')
 
 
 # BOARD: https://www.electronicayciencia.com/assets/2016/11/conexion-gpio-de-raspberry-pi-3/img/pi_board_pinout.jpg
