@@ -13,7 +13,14 @@ import easyimap as imap
 import email
 import datetime
 import logging
+import mysql.connector
 
+mydb = mysql.connector.connect(
+    host="your_host_ip",    #IP address here
+    user="your_username",
+    passwd="your_password",
+    database="profile.sql"
+)
 
 # BOARD: https://www.electronicayciencia.com/assets/2016/11/conexion-gpio-de-raspberry-pi-3/img/pi_board_pinout.jpg
 
@@ -41,6 +48,8 @@ Motor3 = 15 # Input Pin
 GPIO.setup(Motor1,GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(Motor2,GPIO.OUT, initial=GPIO.HIGH)
 GPIO.setup(Motor3,GPIO.OUT, initial=GPIO.LOW)
+
+cursor = mydb.cursor()
 
 logging.basicConfig(level=logging.INFO)
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -81,6 +90,13 @@ def on_message(client, userdata, msg):
     except IndexError as e:
         print(f"Error splitting the message: {e}")
 
+
+def insert_data_to_database(user_id, rfid, temperature_limit, light_limit, humidity_limit, name):
+    sql = "INSERT INTO profile (UserID, RFID, Temperature_Limit, Light_Limit, Humidity_Limit, Name) VALUES (%s, %s, %s, %s, %s, %s)"
+    val = (user_id, rfid, temperature_limit, light_limit, humidity_limit, name)
+    cursor.execute(sql, val)
+    mydb.commit()
+    print("Data inserted into database.")
 
 
 # Setup MQTT Client
@@ -311,6 +327,7 @@ def update_sensor(n):
     global emailSent
     dht.readDHT11()
     temperatureValue = dht.temperature
+    insert_data_to_database(user_id, rfid, temperature_limit, light_limit, humidity_limit, name)
     if temperatureValue > 24 and not emailSent:
         send_email("Temperature is High", "Would you like to start the fan?")
         emailSent = True
@@ -325,5 +342,6 @@ def update_sensor(n):
     humidityValue = dht.humidity
     print(humidityValue, temperatureValue)
     return humidityValue, temperatureValue
+
 
 main()
