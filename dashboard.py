@@ -13,14 +13,10 @@ import easyimap as imap
 import email
 import datetime
 import logging
-import mysql.connector
+import sqlite3
 
-mydb = mysql.connector.connect(
-    host="your_host_ip",    #IP address here
-    user="your_username",
-    passwd="your_password",
-    database="profile.sql"
-)
+conn = sqlite3.connect('profile.db')
+
 
 # BOARD: https://www.electronicayciencia.com/assets/2016/11/conexion-gpio-de-raspberry-pi-3/img/pi_board_pinout.jpg
 
@@ -95,7 +91,7 @@ def insert_data_to_database(user_id, rfid, temperature_limit, light_limit, humid
     sql = "INSERT INTO profile (UserID, RFID, Temperature_Limit, Light_Limit, Humidity_Limit, Name) VALUES (%s, %s, %s, %s, %s, %s)"
     val = (user_id, rfid, temperature_limit, light_limit, humidity_limit, name)
     cursor.execute(sql, val)
-    mydb.commit()
+    conn.commit()
     print("Data inserted into database.")
 
 
